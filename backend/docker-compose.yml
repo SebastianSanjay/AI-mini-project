@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build: .
+    container_name: linguafuse_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - linguafuse_storage:/app/storage
+      - linguafuse_models:/app/models
+    env_file:
+      - .env
+    environment:
+      - COQUI_TOS_AGREED=1
+    depends_on:
+      - postgres
+      - redis
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  celery_worker:
+    build: .
+    container_name: linguafuse_worker
+    volumes:
+      - .:/app
+      - linguafuse_storage:/app/storage
+      - linguafuse_models:/app/models
+    env_file:
+      - .env
+    environment:
+      - COQUI_TOS_AGREED=1
+    depends_on:
+      - redis
+      - postgres
+    command: celery -A workers.celery_app worker --loglevel=info --concurrency=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  redis:
+    image: redis:7-alpine
+    container_name: linguafuse_redis
+    ports:
+      - "6379:6379"
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: linguafuse_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: linguafuse
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:alpine
+    container_name: linguafuse_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - fastapi
+
+volumes:
+  linguafuse_storage:
+  linguafuse_models:
+  postgres_data:

@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FastAPI Server",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--reload",
+                "--host", "0.0.0.0",
+                "--port", "8000"
+            ],
+            "cwd": "${workspaceFolder}/backend",
+            "jinja": true,
+            "justMyCode": true
+        },
+        {
+            "name": "Celery Worker",
+            "type": "python",
+            "request": "launch",
+            "module": "celery",
+            "args": [
+                "-A", "workers.celery_app",
+                "worker",
+                "--loglevel=info"
+            ],
+            "cwd": "${workspaceFolder}/backend",
+            "justMyCode": true
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Full Backend Stack",
+            "configurations": ["FastAPI Server", "Celery Worker"]
+        }
+    ]
+}
