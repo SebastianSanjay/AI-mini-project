@@ -1,0 +1,32 @@
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+celery==5.3.6
+redis==5.0.1
+psycopg2-binary==2.9.9
+SQLAlchemy==2.0.25
+asyncpg==0.29.0
+python-dotenv==1.0.1
+python-multipart==0.0.9
+websockets==12.0
+
+# AI/ML Libraries
+torch==2.1.2
+torchaudio==2.1.2
+torchvision==0.16.2
+transformers==4.37.2
+openai-whisper==20231117
+TTS==0.22.0  # Coqui TTS
+librosa==0.10.1
+
+# Utilities
+ffmpeg-python==0.2.0
+httpx==0.26.0  # For calling external APIs
+pydantic==2.6.1
+pydantic-settings==2.1.0
+tqdm==4.66.1
+
+# Wav2Lip dependencies
+scipy==1.11.4
+opencv-python==4.9.0.80
+numPy==1.26.3
+aiofiles==23.2.1
