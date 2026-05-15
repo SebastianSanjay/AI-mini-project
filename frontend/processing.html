@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing | LinguaFuse AI</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-layout">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="gradient-text logo">LinguaFuse AI</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">🏠 Home</a>
+            <a href="upload.html" class="nav-item">➕ Translation</a>
+        </nav>
+    </aside>
+
+    <main class="dashboard-content processing-page">
+        <header class="dashboard-header text-center">
+            <h1>AI Core Processing</h1>
+            <p>Your video is currently being localized by our neural engines.</p>
+        </header>
+
+        <div class="processing-container">
+            <!-- Left: Visualizer & Logs -->
+            <div class="visualizer-panel glassmorphism">
+                <div class="ai-visualizer">
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
+                    <div class="ring ring-3"></div>
+                    <div class="core-pulse"></div>
+                </div>
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="mac-buttons">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="terminal-title">System Logs (Live)</span>
+                    </div>
+                    <div class="terminal-body" id="log-feed">
+                        <!-- Logs injected here via JS -->
+                        <div class="log-line text-muted">> Connecting to LinguaFuse engine...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Stepper -->
+            <div class="stepper-panel glassmorphism">
+                <h3>Pipeline Status</h3>
+                <div class="progress-bar-bg margin-b">
+                    <div class="progress-bar-fill gradient-bg" id="pipeline-progress-bar" style="width: 0%"></div>
+                </div>
+                <div class="progress-percent-large" id="pipeline-percent">0%</div>
+
+                <ul class="step-list" id="step-list">
+                    <li class="step-item" data-step="upload"><span class="step-icon">✓</span> Upload File</li>
+                    <li class="step-item pending" data-step="extraction"><span class="step-icon"></span> Audio Extraction</li>
+                    <li class="step-item pending" data-step="transcription"><span class="step-icon"></span> Transcription (Whisper)</li>
+                    <li class="step-item pending" data-step="translation"><span class="step-icon"></span> Translation (SeamlessM4T)</li>
+                    <li class="step-item pending" data-step="voice_generation"><span class="step-icon"></span> Voice Gen (XTTS)</li>
+                    <li class="step-item pending" data-step="lip_sync"><span class="step-icon"></span> Lip Sync (Wav2Lip)</li>
+                    <li class="step-item pending" data-step="rendering"><span class="step-icon"></span> Final Rendering</li>
+                </ul>
+
+                <button class="btn btn-outline btn-full margin-t" id="cancel-btn">Cancel Job</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/websocket.js"></script>
+    <script src="js/processing.js"></script>
+</body>
+</html>

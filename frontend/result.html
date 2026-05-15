@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result | LinguaFuse AI</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-layout">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="gradient-text logo">LinguaFuse AI</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">🏠 Home</a>
+            <a href="upload.html" class="nav-item">➕ Translation</a>
+        </nav>
+    </aside>
+
+    <main class="dashboard-content result-page">
+        <div class="result-header text-center fade-in-up">
+            <div class="success-icon slide-up">🎉</div>
+            <h1 class="gradient-text">Translation Complete</h1>
+            <p>Your video has been perfectly localized and is ready for the world.</p>
+        </div>
+
+        <div class="result-container glassmorphism fade-in-up delay-1">
+            <div class="video-container">
+                <div class="skeleton-loader" id="video-loader"></div>
+                <video id="final-video" controls class="hidden"></video>
+            </div>
+
+            <div class="result-actions">
+                <button class="btn btn-primary btn-large w-full" id="download-btn">
+                    ↓ Download HD Video (MP4)
+                </button>
+                <a href="upload.html" class="btn btn-outline btn-large w-full">
+                    Start New Translation
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/result.js"></script>
+</body>
+</html>

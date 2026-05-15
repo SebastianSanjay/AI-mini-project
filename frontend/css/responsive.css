@@ -1,0 +1,72 @@
+/* Responsive CSS */
+
+@media (max-width: 1024px) {
+    .upload-container, .processing-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+
+    .hero-content {
+        margin-bottom: 4rem;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .sidebar-header {
+        border-bottom: none;
+        padding: 1rem;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        padding: 1rem;
+    }
+
+    .dashboard-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-links a:not(.btn) {
+        display: none;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+}

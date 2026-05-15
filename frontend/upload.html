@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Project | LinguaFuse AI</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-layout">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="gradient-text logo">LinguaFuse AI</span>
+            <div class="tier-badge">Premium Tier</div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">🏠 Home</a>
+            <a href="upload.html" class="nav-item active">➕ Translation</a>
+        </nav>
+    </aside>
+
+    <main class="dashboard-content">
+        <header class="dashboard-header">
+            <h1>New Project</h1>
+            <p>Initialize a new localization sequence. Upload your master file to begin AI processing.</p>
+        </header>
+
+        <div class="upload-container">
+            <!-- Left: Dropzone -->
+            <div class="upload-zone-wrapper glassmorphism" id="dropzone">
+                <div class="upload-zone-content">
+                    <div class="upload-icon pulse-soft">☁️</div>
+                    <h2>Drag & Drop Master File</h2>
+                    <p class="file-limits">Supported formats: MP4, MOV, MKV. Resolution up to 4K. Max size: 25GB.</p>
+                    <button class="btn btn-secondary" id="browse-btn">Select File</button>
+                    <input type="file" id="file-input" accept="video/mp4,video/quicktime,video/x-matroska" hidden>
+                </div>
+
+                <!-- Hidden preview area -->
+                <div id="video-preview-container" class="hidden">
+                    <video id="video-preview" controls></video>
+                    <div class="file-info" id="file-info-display"></div>
+                    <button class="btn btn-outline btn-small" id="remove-file-btn">Remove</button>
+                </div>
+            </div>
+
+            <!-- Right: Setup -->
+            <div class="setup-panel glassmorphism">
+                <h3>⚙️ Processing Setup</h3>
+
+                <div class="form-group">
+                    <label for="target-language">Target Language</label>
+                    <select id="target-language" class="custom-select">
+                        <option value="" disabled selected>Select Region...</option>
+                        <!-- Options populated by JS -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="source-language">Source Audio</label>
+                    <select id="source-language" class="custom-select">
+                        <option value="">✨ Auto-Detect</option>
+                        <!-- Options populated by JS -->
+                    </select>
+                </div>
+
+                <div class="progress-container hidden" id="upload-progress-container">
+                    <div class="progress-header">
+                        <span id="upload-status-text">Uploading...</span>
+                        <span id="upload-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="upload-progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <button class="btn btn-primary btn-full disabled" id="start-btn" disabled>
+                        <span class="btn-icon">⚡</span> Start Translation
+                    </button>
+                    <p class="helper-text" id="start-helper">Upload a file to proceed</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+</html>
